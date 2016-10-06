@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-0": {"buscaVagas": ""}
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+} 

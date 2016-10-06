@@ -1,0 +1,28 @@
+Arquivo com instruções gerais de funcionamento do projeto.
+
+
+Funcionamento:
+	Para utilizar a API desenvolvida, basta fazer uma requisição GET em src/Application/BuscaVagas/script.php a partir do diretorio em que se encontra o projeto.
+	A API aceita os seguintes parâmetros:
+		- texto: procura vagas por texto (nos atributos title e description);
+		- cidade: procura vagas por uma cidade
+		- ord: possibilita a ordenação dos resultados a partir do salario. Use 'asc' para ordenar de forma crescente, e 'desc' para ordenar de forma descrescente. Parâmetros diferentes de 'asc' e 'desc' são aceitos, mas não fazem diferença na ordenação dos resultados.
+	Deste modo, para buscar vagas na cidade de Porto Alegre que contenham Estágio no título ou na descrição e ordená-las de forma decrescente de acordo com o salário, basta fazer uma requisição para enderecoservidor/diretorioraizdoprojeto/src/Application/BuscaVagas/script.php?texto=Estágio&cidade=Porto%20Alegre&ord=desc
+
+	O retorno é sempre obtido no formato JSON.
+
+	Observações: Nenhum dos parâmetros é obrigatório. Para este projeto, não existe a necessidade de filtrar os parâmetros a fim de evitar injeções mal intencionadas de código, dado que o mesmo apenas lê os dados de um arquivo JSON. Em aplicações que envolvem bancos de dados, é necessário implementar funções que escapam alguns caracteres para protegê-las de ataques como SQL injection.
+
+
+Testes:
+	Para automatizar os testes, a aplicação usa o framework PHPUnit (https://phpunit.de/). Neste ambiente, o PHPUnit foi instalado através do composer (https://getcomposer.org/download/), a partir de seu arquivo de configuração composer.json que se encontra no mesmo diretório deste arquivo. A estrutura de diretórios utilizada segue as convenções do próprio framework, e é declarada no autoloader do composer para que o mesmo reconheça os namespaces.
+
+	Os testes estão localizados no arquivo BuscaTest.php, localizado em tests/
+
+	O arquivo de configuração phpunit.xml define como padrão alguns parâmetros do PHPUnit, e especifica o diretorio em que os testes estão localizados. 
+
+	Após receber os arquivos do projeto e instalar o composer na raiz do mesmo, é necessário executar o comando ./composer.phar update 
+
+	Dessa forma, para realizar os testes basta executar o comando ./vendor/bin/phpunit a partir do diretório raiz do projeto.
+
+	Novos testes podem ser escritos no arquivo BuscaTest.php, se necessário.
